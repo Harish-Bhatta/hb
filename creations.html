@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Creations - Harish Bhatta</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');
+
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #000;
+    -webkit-tap-highlight-color: rgba(255,255,255,0.3);
+  }
+  body {
+    min-height: 100vh;
+    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad090, #ffecd2);
+    background-size: 800% 800%;
+    animation: slidebg 12s ease infinite;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  @keyframes slidebg {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+  #hamburger {
+    position: fixed; left: 20px; top: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1400;
+  }
+  #drawer {
+    position: fixed; top: 0; left: -260px;
+    width: 260px; height: 100%;
+    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad090, #ffecd2);
+    background-size: 800% 800%;
+    animation: slidebg 12s ease infinite;
+    color: #000;
+    z-index: 1300;
+    padding: 70px 20px 20px;
+    transition: left .4s;
+    box-shadow: 2px 0 12px rgba(0,0,0,0.2);
+  }
+  #drawer.open { left: 0; }
+  #drawer ul { 
+    list-style: none; 
+    margin-top: 15px;
+    padding-left: 0;
+  }
+  #drawer li { 
+    margin: 15px 0; 
+    cursor: pointer; 
+    font-weight: 600; 
+  }
+  #drawer li a {
+    color: #000;
+    text-decoration: none;
+    display: block;
+    padding: 5px 0;
+  }
+  #drawer hr { 
+    border-color: rgba(0,0,0,0.1); 
+    margin: 20px 0; 
+  }
+  #drawer .social-links {
+    margin: 0;
+    padding: 0;
+  }
+  #drawer .social-links a {
+    display: block;
+    padding: 5px 0;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  #drawer .contact-info {
+    margin: 8px 0;
+    font-weight: 500;
+  }
+
+    header {
+    position: fixed; top: 0; left: 70px;
+    width: calc(100% - 70px);
+    display: flex; gap: 35px;
+    padding: 15px 20px;
+    justify-content: center;
+    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad090, #ffecd2);
+    background-size: 800% 800%;
+    animation: slidebg 12s ease infinite;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    z-index: 1200;
+  }
+  header a {
+    text-decoration: none;
+    color: #000;
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    transition: all .3s;
+    backdrop-filter: blur(5px);
+  }
+  header a.active {
+    font-weight: 700;
+    background: rgba(255,255,255,0.5);
+  }
+  header a:after {
+    content: "";
+    position: absolute;
+    width: 0; height: 0;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255,255,255,0.4);
+    border-radius: 50%;
+    opacity: 0;
+    transition: width .4s, height .4s, opacity .4s;
+  }
+  header a:active:after {
+    width: 200px; height: 200px; opacity: 1;
+  }
+
+  main {
+    margin-top: 120px;
+    padding: 40px 20px;
+    flex: 1;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(255,255,255,0.6);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+  h1 {
+    font-size: 2.7rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  p {
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .gallery-item {
+    width: 250px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad090, #ffecd2);
+    animation: slidebg 13s ease infinite;
+    transition: transform 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    cursor: pointer;
+  }
+  .gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+  }
+  .gallery-item p {
+    margin: 10px;
+    font-weight: 600;
+    text-align: center;
+    color: #333;
+  }
+
+  /* Popup Modal Styles */
+  #popupOverlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(3px);
+    z-index: 1500;
+    justify-content: center;
+    align-items: center;
+  }
+  #popupContent {
+    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad090, #ffecd2);
+    background-size: 800% 800%;
+    animation: slidebg 13s ease infinite;
+    padding: 20px 30px;
+    border-radius: 15px;
+    max-width: 300px;
+    max-height: 60vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    font-family: 'Homemade Apple', cursive;
+    color: #000;
+    text-align: center;
+  }
+
+  /* Navigation styles inside drawer */
+  #drawer li a.active {
+    font-weight: 700;
+    background: rgba(255,255,255,0.5);
+    border-radius: 15px;
+    padding-left: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div id="hamburger">☰</div>
+
+<div id="drawer">
+  <h2>Menu</h2>
+  <ul>
+    <li><a href="journey.html">📄 Journey</a></li>
+    <li><a href="creations.html" class="active">⭐ Creations</a></li>
+    <li><a href="connect.html">⚙️ Connect</a></li>
+    
+  </ul>
+  <hr>
+  <!-- Social media links - now properly left-aligned -->
+  <div class="social-links">
+    <a href="https://www.facebook.com/harish.bhatta.56305" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       style="color: #1877f2;">🌐 Facebook</a>
+    <a href="https://youtube.com/@psycoshhb?si=iwU8pIWr0_GJnVZr" 
+       target="_blank"
+       style="color: #ff0000;">▶ YouTube</a>
+  </div>
+  <hr>
+  <div class="contact-info">📞 +977-9848653932</div>
+  <div class="contact-info">✉ harishbhatta105@gmail.com</div>
+</div>
+
+<header>
+  <a href="index.html" class="nav-link">H</a>
+  <a href="journey.html" class="nav-link">J</a>
+  <a href="creations.html" class="nav-link active">Cr</a>
+  <a href="connect.html" class="nav-link">Co</a>
+</header>
+  
+<main>
+  <h1>My Creations 🎨</h1>
+  <p>Welcome to my creations page! Here are some of the projects, artworks, or ideas I have worked on.</p>
+
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="hb.jpg" alt="Creation 1" />
+      <p>Project One</p>
+    </div>
+    <div class="gallery-item">
+      <img src="bh.jpg" alt="Creation 2" />
+      <p>Project Two</p>
+    </div>
+    <!-- Add more creations as you like -->
+  </div>
+</main>
+<footer>&copy; 2025 Harish Bhatta | Made with ❤</footer>
+
+<!-- Popup Modal -->
+<div id="popupOverlay">
+  <div id="popupContent">
+    <h2>Welcome to Explore More! <span class="emoji">✨🚀</span></h2>
+    <p>
+      Here you'll find my <span class="emoji">📚</span> passions, <span class="emoji">💡</span> dreams, and <span class="emoji">❤️</span> inspirations.<br/>
+      I'm on a journey to become a doctor, a kind and hardworking person,<br/>
+      and to live life with pure love and joy.<br/>
+      Thanks for exploring with me! <span class="emoji">😊🌟</span>
+    </p>
+  </div>
+</div>
+
+<script>
+  const drawer = document.getElementById('drawer');
+  const hamb = document.getElementById('hamburger');
+
+  // Tap hamburger to toggle drawer
+  hamb.addEventListener('click', e => {
+    e.stopPropagation();
+    drawer.classList.toggle('open');
+  });
+
+  // Tap outside to close
+  document.addEventListener('click', e => {
+    if (drawer.classList.contains('open') && !drawer.contains(e.target) && e.target !== hamb) {
+      drawer.classList.remove('open');
+    }
+  });
+
+// Update the existing touch event handlers
+let startX = 0;
+let startTime = 0;
+
+document.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    startTime = Date.now();
+});
+
+document.addEventListener('touchend', e => {
+    const endX = e.changedTouches[0].clientX;
+    const endTime = Date.now();
+    const diffX = endX - startX;
+    const duration = endTime - startTime;
+    
+    // Only consider it a swipe if it's fast enough and long enough
+    if (duration < 300 && Math.abs(diffX) > 50) {
+        if (diffX > 0) {
+            // Swipe right to open
+            drawer.classList.add('open');
+        } else {
+            // Swipe left to close
+            drawer.classList.remove('open');
+        }
+    }
+});
+</script>
+
+</body>
+</html>

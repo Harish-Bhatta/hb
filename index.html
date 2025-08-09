@@ -1,0 +1,538 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Title -->
+  <title>Harish Bhatta – Official Website</title>
+
+  <!-- Meta Description -->
+  <meta name="description" content="Welcome to the official website of Harish Bhatta. Explore my projects, portfolio, and more." />
+
+  <!-- Keywords (Optional) -->
+  <meta name="keywords" content="Harish Bhatta, HB, Harish Bhatta Official, Harish Bhatta Projects, Harish Bhatta Portfolio" />
+
+  <!-- Open Graph (Facebook, LinkedIn, etc.) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Harish Bhatta – Official Website" />
+  <meta property="og:description" content="Welcome to the official website of Harish Bhatta. Explore my projects, portfolio, and more." />
+  <meta property="og:url" content="https://harish-bhatta.github.io/HBhb/" />
+  <meta property="og:image" content="https://harish-bhatta.github.io/HB/bh.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Harish Bhatta – Official Website" />
+  <meta name="twitter:description" content="Welcome to the official website of Harish Bhatta. Explore my projects, portfolio, and more." />
+  <meta name="twitter:image" content="https://harish-bhatta.github.io/HBhb/bh.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <meta name="google-site-verification" content="5nuFfuWkZ_BdkAZbVfsFB0PA7GhuyRQtoT3K_LmSuLI" />
+</head>
+<style>  
+  @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');  
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #000;
+    -webkit-tap-highlight-color: rgba(255,255,255,0.3);
+  }
+  body {
+    min-height: 100vh;
+    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad090, #ffecd2);
+    background-size: 800% 800%;
+    animation: slidebg 12s ease infinite;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  @keyframes slidebg {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+  #hamburger {
+    position: fixed; left: 20px; top: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1400;
+    transition: all 0.3s;
+  }
+  #drawer {
+    position: fixed; top: 0; left: -260px;
+    width: 260px; height: 100%;
+    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad090, #ffecd2);
+    background-size: 800% 800%;
+    animation: slidebg 12s ease infinite;
+    color: #000;
+    z-index: 1300;
+    padding: 70px 20px 20px;
+    transition: left .4s;
+    box-shadow: 2px 0 12px rgba(0,0,0,0.2);
+  }
+  #drawer.open { left: 0; }
+  #drawer ul { list-style: none; margin-top: 15px; }
+  #drawer li { margin: 15px 0; cursor: pointer; font-weight: 600; }
+  #drawer li a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    padding: 5px 0;
+  }
+  #drawer hr { border-color: rgba(0,0,0,0.1); margin: 20px 0; }
+  #drawer p { margin: 8px 0; font-weight: 500; }
+
+  header {
+    position: fixed; top: 0; left: 70px;
+    width: calc(100% - 70px);
+    display: flex; gap: 35px;
+    padding: 15px 20px;
+    justify-content: center;
+    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad090, #ffecd2);
+    background-size: 800% 800%;
+    animation: slidebg 12s ease infinite;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    z-index: 1200;
+  }
+  header a {
+    text-decoration: none;
+    color: #000;
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    transition: all .3s;
+    backdrop-filter: blur(5px);
+  }
+  header a.active {
+    font-weight: 700;
+    background: rgba(255,255,255,0.5);
+  }
+  header a:after {
+    content: "";
+    position: absolute;
+    width: 0; height: 0;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255,255,255,0.4);
+    border-radius: 50%;
+    opacity: 0;
+    transition: width .4s, height .4s, opacity .4s;
+  }
+  header a:active:after {
+    width: 200px; height: 200px; opacity: 1;
+  }
+  main {
+    text-align: center;
+    margin-top: 120px;
+    padding: 40px 20px;
+    flex: 1;
+  }
+  h1 {
+    font-size: 2.7rem;
+    margin-bottom: 10px;
+  }
+  p {
+    margin-bottom: 25px;
+  }
+  .btn {
+    background: #ff7e5f;
+    color: #fff;
+    border: none;
+    padding: 15px 45px;
+    border-radius: 50px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .4s;
+  }
+  .btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(255,255,255,0.5);
+  }
+  footer {
+    text-align: center;
+    margin-top: auto;
+    padding: 15px 0;
+    font-size: .9rem;
+  }
+
+  /* Popup Modal Styles */
+  #popupOverlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(3px);
+    z-index: 1500;
+    justify-content: center;
+    align-items: center;
+  }
+  #popupContent {
+    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad090, #ffecd2);
+    background-size: 800% 800%;
+    animation: slidebg 12s ease infinite;
+    padding: 20px 30px;
+    border-radius: 15px;
+    max-width: 300px;
+    max-height: 60vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    font-family: 'Homemade Apple', cursive;
+    color: #000;
+    text-align: center;
+  }
+
+  /* Welcome Popup Styles */
+  #welcomeOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  #welcomeOverlay.active {
+    display: flex;
+    opacity: 1;
+  }
+  #welcomeContent {
+    position: relative;
+    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad090, #ffecd2);
+    background-size: 800% 800%;
+    animation: slidebg 12s ease infinite;
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 90%;
+    width: 300px;
+    animation: fadeIn 0.5s ease-out;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    cursor: default;
+  }
+  #welcomeContent h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #000;
+  }
+  #welcomeContent p {
+    color: #000;
+    margin-bottom: 20px;
+  }
+  .confetti-piece {
+    position: absolute;
+    width: 8px;
+    height: 15px;
+    background-color: hsl(var(--hue), 80%, 60%);
+    animation: confettiUp 2s ease-out forwards;
+    opacity: 0;
+    border-radius: 50%;
+  }
+  .balloon {
+    position: absolute;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: float 3s ease-in-out infinite;
+  }
+  .balloon-large {
+    width: 40px;
+    height: 50px;
+    background: radial-gradient(circle at 30% 30%, #ff8fa3, #ff2e63);
+  }
+  .balloon-small {
+    width: 30px;
+    height: 40px;
+    background: radial-gradient(circle at 30% 30%, #90caf9, #1976d2);
+  }
+  .thread {
+    position: absolute;
+    width: 2px;
+    background: rgba(0,0,0,0.3);
+    animation: sway 3s ease-in-out infinite;
+    transform-origin: top center;
+  }
+  .timer-progress {
+    height: 100%;
+    background: #ff7e5f;
+    width: 100%;
+    animation: timerCountdown 5s linear forwards;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes confettiUp {
+    0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+    100% { transform: translateY(-500px) rotate(720deg) scale(0.5); opacity: 0; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+  @keyframes sway {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+  }
+  @keyframes timerCountdown {
+    from { width: 100%; }
+    to { width: 0%; }
+  }
+
+  /* Circular moving gradient images */
+  .image-frame-container{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+  }
+  .image-frame{
+    width:150px;
+    height:150px;
+    padding:6px;
+    border-radius:50%;
+    background:linear-gradient(45deg,#ff9a9e,#fad0c4,#fad090,#ffecd2);
+    background-size:300% 300%;
+    animation:borderMove 6s linear infinite;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .image-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+    border:4px solid #ffffff;
+  }
+  @keyframes borderMove {
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
+  
+  /* Lock state when welcome is open */
+  body.welcome-open #hamburger,
+  body.welcome-open header a,
+  body.welcome-open #drawer li {
+    pointer-events: none;
+    opacity: 0.7;
+  }
+</style>
+</head>  
+<body>  
+  <!-- Welcome Popup -->
+  <div id="welcomeOverlay">
+    <div id="welcomeContent" onclick="event.stopPropagation()">
+      <!-- Balloons with threads -->
+      <div class="balloon balloon-large" style="top: -80px; left: 20%;"></div>
+      <div class="thread" style="height: 70px; top: -10px; left: 20%;"></div>
+      
+      <div class="balloon balloon-small" style="top: -70px; left: 35%; animation-delay: 0.5s;"></div>
+      <div class="thread" style="height: 60px; top: -10px; left: 35%; animation-delay: 0.5s;"></div>
+      
+      <div class="balloon balloon-large" style="top: -90px; left: 65%; animation-delay: 0.3s;"></div>
+      <div class="thread" style="height: 80px; top: -10px; left: 65%; animation-delay: 0.3s;"></div>
+      
+      <div class="balloon balloon-small" style="top: -60px; left: 80%; animation-delay: 0.7s;"></div>
+      <div class="thread" style="height: 50px; top: -10px; left: 80%; animation-delay: 0.7s;"></div>
+      
+      <h2>Welcome to My Space</h2>
+      <p>Let's begin this beautiful journey together</p>
+      <button class="btn" onclick="closeWelcome()">Enter</button>
+      <div class="timer-bar">
+        <div class="timer-progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Original Content -->
+  <div id="hamburger">☰</div>  
+  <div id="drawer">  
+    <h2>Menu</h2>  
+    <ul>  
+      <li><a href="journey.html">📄 Journey</a></li>  
+      <li><a href="creations.html">⭐ Creations</a></li>  
+      <li><a href="connect.html">⚙️ Connect</a></li>
+     
+    </ul>  
+    <hr>  
+    <p>  
+      <a style="text-decoration:none;color:#1877f2;"   
+         href="https://www.facebook.com/harish.bhatta.56305"   
+         target="_blank"   
+         rel="noopener noreferrer">🌐 Facebook</a>  
+    </p>  
+    <p><a style="text-decoration:none;color:#ff0000;" href="https://youtube.com/@psycoshhb?si=iwU8pIWr0_GJnVZr" target="_blank">▶ YouTube</a></p>  
+    <hr>  
+    <p>📞 +977-9848653932</p>  
+    <p>✉ harishbhatta105@gmail.com</p>  
+  </div>  
+  <header>  
+    <a href="index.html" class="nav-link active">H</a>  
+    <a href="about.html" class="nav-link">A</a>  
+    <a href="projects.html" class="nav-link">P</a>  
+    <a href="contact.html" class="nav-link">C</a>  
+  </header>  
+  <main>  
+    <h1>Hello, I'm Harish Bhatta</h1>  
+    <p>A passionate student and future doctor 🚀</p>  
+    <button class="btn" id="exploreBtn">Explore More</button>  
+    <div class="image-frame-container">  
+      <div class="image-frame">  
+        <img src="hb.jpg" alt="Bhatta">  
+      </div>  
+      <div class="image-frame">  
+        <img src="bh.jpg" alt="Harish">  
+      </div>  
+    </div>  
+  </main>  
+  <footer>&copy; 2025 HB Creations | Made with a❤</footer>  
+  <div id="popupOverlay">  
+    <div id="popupContent">  
+      <h2>Welcome to Explore More! ✨🚀</h2>  
+      <p>  
+        Here you'll find my 📚 passions, 💡 dreams, and ❤️ inspirations.<br/>  
+        I'm on a journey to become a doctor, a kind and hardworking person,<br/>  
+        and to live life with pure love and joy.<br/>  
+        Thanks for exploring with me! 😊🌟  
+      </p>  
+    </div>  
+  </div>  
+
+  <script>  
+    // ===== DRAWER/MENU FUNCTIONALITY =====
+    const drawer = document.getElementById('drawer');  
+    const hamb = document.getElementById('hamburger');  
+    const popupOverlay = document.getElementById('popupOverlay');  
+    const exploreBtn = document.getElementById('exploreBtn');  
+    let popupOpen = false;  
+    
+    hamb.addEventListener('click', e => {  
+      e.stopPropagation();  
+      if(!popupOpen) {  
+        drawer.classList.toggle('open');  
+      }  
+    });  
+    
+    document.addEventListener('click', e => {  
+      if(!popupOpen && drawer.classList.contains('open') && !drawer.contains(e.target) && e.target !== hamb) {  
+        drawer.classList.remove('open');  
+      }  
+    });  
+    
+    exploreBtn.addEventListener('click', () => {  
+      popupOverlay.style.display = 'flex';  
+      popupOpen = true;  
+      drawer.classList.remove('open');  
+    });  
+    
+    popupOverlay.addEventListener('click', e => {  
+      if(e.target === popupOverlay) {  
+        popupOverlay.style.display = 'none';  
+        popupOpen = false;  
+      }  
+    });  
+    
+    // Touch swipe handling
+    let startX = 0;  
+    document.addEventListener('touchstart', e => {  
+      startX = e.touches[0].clientX;  
+    });  
+    
+    document.addEventListener('touchend', e => {  
+      if(popupOpen) return;  
+      const endX = e.changedTouches[0].clientX;  
+      const diff = endX - startX;  
+      if(Math.abs(diff) > 50) {  
+        if(diff > 0) {  
+          drawer.classList.add('open');  
+        } else {  
+          drawer.classList.remove('open');  
+        }  
+      }  
+    });  
+    
+    // Nav link active state
+    document.querySelectorAll('.nav-link').forEach(a => {  
+      a.addEventListener('click', function() {  
+        if(this.classList.contains('active')) return;  
+        document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));  
+        this.classList.add('active');  
+      });  
+    });  
+
+    // ===== IMPROVED WELCOME POPUP =====
+    const welcomeOverlay = document.getElementById('welcomeOverlay');
+    let welcomeShown = false;
+    
+    // Show welcome on first visit or when returning from another tab
+    function showWelcome() {
+      if (welcomeShown) return;
+      
+      document.body.classList.add('welcome-open');
+      welcomeOverlay.classList.add('active');
+      welcomeShown = true;
+      
+      // Auto-close after 5 seconds
+      setTimeout(() => {
+        if (welcomeOverlay.classList.contains('active')) {
+          closeWelcome();
+        }
+      }, 5000);
+    }
+    
+    function closeWelcome() {
+      launchConfetti();
+      welcomeOverlay.classList.remove('active');
+      document.body.classList.remove('welcome-open');
+    }
+    
+    // Check if should show welcome
+    function checkWelcome() {
+      if (!sessionStorage.getItem('welcomeShown')) {
+        showWelcome();
+        sessionStorage.setItem('welcomeShown', 'true');
+      }
+    }
+    
+    // Handle tab visibility changes
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible' && !welcomeShown) {
+        showWelcome();
+      }
+    });
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', checkWelcome);
+    welcomeOverlay.addEventListener('click', closeWelcome);
+    document.querySelector('#welcomeContent button').addEventListener('click', closeWelcome);
+    
+    // Confetti function (keep your original)
+    function launchConfetti() {  
+      const colors = ['#ff9a9e', '#fad0c4', '#fad090', '#ffecd2', '#90caf9', '#ff7e5f'];
+      for (let i = 0; i < 60; i++) {  
+        const confetti = document.createElement('div');  
+        confetti.classList.add('confetti-piece');  
+        confetti.style.left = `${Math.random() * window.innerWidth}px`;  
+        confetti.style.bottom = `0px`;  
+        confetti.style.setProperty('--hue', Math.floor(Math.random() * 360));  
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDuration = `${Math.random() * 2 + 1.5}s`;
+        document.body.appendChild(confetti);  
+        setTimeout(() => {  
+          confetti.remove();  
+        }, 2000);  
+      }  
+    }
+  </script>  
+</body>  
+</html>
