@@ -177,6 +177,12 @@
     text-align: center;
     color: #333;
   }
+footer {
+    text-align: center;
+    margin-top: auto;
+    padding: 15px 0;
+    font-size: .9rem;
+  }
 
   /* Popup Modal Styles */
   #popupOverlay {
@@ -297,14 +303,21 @@
     }
   });
 
-// Update the existing touch event handlers
-let startX = 0;
-let startTime = 0;
-
-document.addEventListener('touchstart', e => {
+ // Swipe detection: only swipe left to close drawer
+  let startX = 0;
+  document.addEventListener('touchstart', e => {
     startX = e.touches[0].clientX;
-    startTime = Date.now();
-});
+  });
+  document.addEventListener('touchend', e => {
+    const endX = e.changedTouches[0].clientX;
+    const diff = endX - startX;
+    if (Math.abs(diff) > 50) {
+      if (diff < 0) {
+        drawer.classList.remove('open'); // Swipe left closes drawer
+      }
+      // Swipe right does nothing
+    }
+  });
 
 document.addEventListener('touchend', e => {
     const endX = e.changedTouches[0].clientX;
