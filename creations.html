@@ -7,236 +7,72 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');
 
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #000;
-    -webkit-tap-highlight-color: rgba(255,255,255,0.3);
-  }
-  body {
-    min-height: 100vh;
-    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad090, #ffecd2);
-    background-size: 800% 800%;
-    animation: slidebg 12s ease infinite;
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-  @keyframes slidebg {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
-  }
-  #hamburger {
-    position: fixed; left: 20px; top: 20px;
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: 1400;
-  }
-  #drawer {
-    position: fixed; top: 0; left: -260px;
-    width: 260px; height: 100%;
-    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad090, #ffecd2);
-    background-size: 800% 800%;
-    animation: slidebg 12s ease infinite;
-    color: #000;
-    z-index: 1300;
-    padding: 70px 20px 20px;
-    transition: left .4s;
-    box-shadow: 2px 0 12px rgba(0,0,0,0.2);
-  }
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #000; -webkit-tap-highlight-color: rgba(255,255,255,0.3); }
+  body { min-height: 100vh; background: #fad090; background-size: 800% 800%; animation: slidebg 12s ease infinite; overflow-x: hidden; display: flex; flex-direction: column; }
+  @keyframes slidebg { 0% {background-position: 0% 50%;} 50% {background-position: 100% 50%;} 100% {background-position: 0% 50%;} }
+  #hamburger { position: fixed; left: 0px; top: 0px; width: calc(40% - 70px); font-size: 2rem; padding: 12.5px 20px; cursor: pointer; z-index: 1400; background: #fad090; background-size: 800% 800%; animation: slidebg 12s ease infinite; border-bottom: 1px solid rgba(0,0,0,0.1); }
+  #drawer { position: fixed; top: 0; left: -260px; width: 260px; height: 100%; background: #fad090; background-size: 800% 800%; animation: slidebg 12s ease infinite; color: #000; z-index: 1300; padding: 70px 20px 20px; transition: left .4s; box-shadow: 2px 0 12px rgba(0,0,0,0.2); }
   #drawer.open { left: 0; }
-  #drawer ul { 
-    list-style: none; 
-    margin-top: 15px;
-    padding-left: 0;
-  }
-  #drawer li { 
-    margin: 15px 0; 
-    cursor: pointer; 
-    font-weight: 600; 
-  }
-  #drawer li a {
-    color: #000;
-    text-decoration: none;
-    display: block;
-    padding: 5px 0;
-  }
-  #drawer hr { 
-    border-color: rgba(0,0,0,0.1); 
-    margin: 20px 0; 
-  }
-  #drawer .social-links {
-    margin: 0;
-    padding: 0;
-  }
-  #drawer .social-links a {
-    display: block;
-    padding: 5px 0;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  #drawer .contact-info {
-    margin: 8px 0;
-    font-weight: 500;
-  }
+  #drawer ul { list-style: none; margin-top: 15px; padding-left: 0; }
+  #drawer li { margin: 15px 0; cursor: pointer; font-weight: 600; }
+  #drawer li a { color: #000; text-decoration: none; display: block; padding: 5px 0; }
+  #drawer li a.active { font-weight: 700; background: rgba(255,255,255,0.5); border-radius: 15px; padding-left: 10px; }
+  #drawer hr { border-color: rgba(0,0,0,0.1); margin: 20px 0; }
+  #drawer .social-links a { display: block; padding: 5px 0; text-decoration: none; font-weight: 600; }
+  #drawer .contact-info { margin: 8px 0; font-weight: 500; }
+  header { position: fixed; top: 0; left: 70px; width: calc(100% - 70px); display: flex; gap: 35px; padding: 15px 20px; justify-content: center; background: #fad090; background-size: 800% 800%; animation: slidebg 12s ease infinite; border-bottom: 1px solid rgba(0,0,0,0.1); z-index: 1200; }
+  header a { text-decoration: none; color: #000; padding: 10px 15px; border-radius: 25px; font-weight: 500; position: relative; overflow: hidden; transition: all .3s; backdrop-filter: blur(5px); }
+  header a.active { font-weight: 700; background: rgba(255,255,255,0.5); }
+  main { max-width: 900px; margin: 120px auto 40px auto; padding: 0 20px; flex: 1; }
+  h1 { font-size: 2.7rem; margin-bottom: 20px; text-align: center; }
 
-    header {
-    position: fixed; top: 0; left: 70px;
-    width: calc(100% - 70px);
-    display: flex; gap: 35px;
-    padding: 15px 20px;
-    justify-content: center;
-    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad090, #ffecd2);
-    background-size: 800% 800%;
-    animation: slidebg 12s ease infinite;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-    z-index: 1200;
-  }
-  header a {
-    text-decoration: none;
-    color: #000;
-    padding: 10px 15px;
-    border-radius: 25px;
-    font-weight: 500;
-    position: relative;
-    overflow: hidden;
-    transition: all .3s;
-    backdrop-filter: blur(5px);
-  }
-  header a.active {
-    font-weight: 700;
-    background: rgba(255,255,255,0.5);
-  }
-  header a:after {
-    content: "";
-    position: absolute;
-    width: 0; height: 0;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(255,255,255,0.4);
-    border-radius: 50%;
-    opacity: 0;
-    transition: width .4s, height .4s, opacity .4s;
-  }
-  header a:active:after {
-    width: 200px; height: 200px; opacity: 1;
-  }
+  .resume-section { margin-bottom: 25px; padding: 15px; background: rgba(255,255,255,0.0); border-radius: 12px; }
+  .resume-section h2 { font-size: 1.4rem; margin-bottom: 10px; }
+  .resume-section p, .resume-section ul { font-size: 1rem; line-height: 1.5; }
 
- main {
-      max-width: 600px;
-      margin: 120px auto 40px auto;
-      padding: 0 20px;
-      flex: 1;
-    }
-  h1 {
-    font-size: 2.7rem;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  p {
-    margin-bottom: 25px;
-    font-size: 1.1rem;
-    text-align: center;
-  }
-  .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  .gallery-item {
-    width: 250px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad090, #ffecd2);
-    animation: slidebg 13s ease infinite;
-    transition: transform 0.3s ease;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    cursor: pointer;
-  }
-  .gallery-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-  }
-  .gallery-item img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    display: block;
-  }
-  .gallery-item p {
-    margin: 10px;
-    font-weight: 600;
-    text-align: center;
-    color: #333;
-  }
-footer {
-    text-align: center;
-    margin-top: auto;
-    padding: 15px 0;
-    font-size: .9rem;
-  }
+  .video-container { position: relative; width: 100%; margin-top: 20px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+  .video-container video { width: 100%; display: block; cursor: pointer; }
+  .video-controls { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.7); padding: 10px; display: flex; flex-direction: column; transition: opacity 0.3s; opacity: 0; }
+  .video-container:hover .video-controls { opacity: 1; }
+  .progress-container { width: 100%; height: 6px; background: none; margin-bottom: 8px; cursor: pointer; border-radius: 3px; }
+  .progress-bar { height: 100%; background: #ff0000; border-radius: 3px; width: 0%; position: relative; }
+  .progress-bar::after { content: ''; position: absolute; right: -5px; top: 50%; transform: translateY(-50%); width: 10px; height: 10px; background: #ff0000; border-radius: 50%; opacity: 0; transition: opacity 0.2s; }
+  .progress-container:hover .progress-bar::after { opacity: 1; }
+  .controls-row { display: flex; align-items: center; justify-content: space-between; }
+  .left-controls, .right-controls { display: flex; align-items: center; gap: 10px; }
+  .control-btn { background: none; border: none; color: white; cursor: pointer; font-size: 16px; padding: 5px; }
+  .time-display { color: white; font-size: 14px; font-family: monospace; }
+  .play-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 3rem; color: rgba(255,255,255,0.8); pointer-events: none; opacity: 0; transition: opacity 0.3s; }
+  .video-container.paused .play-overlay { opacity: 0; }
+  .thumbnail-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; pointer-events: none; opacity: 0; transition: opacity 0.3s; }
+  .video-container.playing .thumbnail-overlay { opacity: 0; }
 
-  /* Popup Modal Styles */
-  #popupOverlay {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(3px);
-    z-index: 1500;
-    justify-content: center;
-    align-items: center;
-  }
-  #popupContent {
-    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad090, #ffecd2);
-    background-size: 800% 800%;
-    animation: slidebg 13s ease infinite;
-    padding: 20px 30px;
-    border-radius: 15px;
-    max-width: 300px;
-    max-height: 60vh;
-    overflow-y: auto;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    font-family: 'Homemade Apple', cursive;
-    color: #000;
-    text-align: center;
-  }
-
-  /* Navigation styles inside drawer */
-  #drawer li a.active {
-    font-weight: 700;
-    background: rgba(255,255,255,0.5);
-    border-radius: 15px;
-    padding-left: 10px;
-  }
+  .thank-you { font-size: 2.9rem; text-align: center; font-weight: bold; background: linear-gradient(90deg,#ff0080,#ff8c00,#ffff00,#00ff00,#0080ff,#8000ff,#ff0080); background-size: 400% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: moveGradient 6s linear infinite; margin: 50px 0 20px; user-select: none; }
+  @keyframes moveGradient { 0% { background-position: 400% 50%; } 100% { background-position: 0% 50%; } }
+  footer { text-align: center; margin-top: auto; padding: 15px 0; font-size: .9rem; }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
 <div id="hamburger">☰</div>
-
 <div id="drawer">
   <h2>Menu</h2>
   <ul>
-    <li><a href="journey.html">📄 Journey</a></li>
-    <li><a href="creations.html" class="active">⭐ Creations</a></li>
-    <li><a href="connect.html">⚙️ Connect</a></li>
-    
+    <li><a href="journey.html">🚀 Journey</a></li>
+    <li><a href="gallery.html">🖼️ Gallery</a></li>
+    <li><a href="connect.html">📝️ Connect</a></li>
   </ul>
   <hr>
-  <!-- Social media links - now properly left-aligned -->
+  <ul>
+    <li><a href="resume.html">🌟 Resume</a></li>
+    <li><a href="creations.html" class="active">🎨 Creations</a></li>
+    <li><a href="inspirations.html">💡 Inspirations</a></li>
+  </ul>
+  <hr>
   <div class="social-links">
-    <a href="https://www.facebook.com/harish.bhatta.56305" 
-       target="_blank" 
-       rel="noopener noreferrer"
-       style="color: #1877f2;">🌐 Facebook</a>
-    <a href="https://youtube.com/@psycoshhb?si=iwU8pIWr0_GJnVZr" 
-       target="_blank"
-       style="color: #ff0000;">▶ YouTube</a>
+    <a href="https://www.facebook.com/harish.bhatta.56305" target="_blank" style="color: #1877f2;">🌐 Facebook</a>
+    <a href="https://youtube.com/@psycoshhb?si=iwU8pIWr0_GJnVZr" target="_blank" style="color: #ff0000;">▶ YouTube</a>
   </div>
   <hr>
   <div class="contact-info">📞 +977-9848653932</div>
@@ -245,92 +81,194 @@ footer {
 
 <header>
   <a href="index.html" class="nav-link">H</a>
-  <a href="journey.html" class="nav-link">J</a>
+  <a href="resume.html" class="nav-link">R</a>
   <a href="creations.html" class="nav-link active">Cr</a>
-  <a href="connect.html" class="nav-link">Co</a>
+  <a href="inspirations.html" class="nav-link">I</a>
 </header>
-  
+
 <main>
   <h1>My Creations 🎨</h1>
-  <p>Welcome to my creations page! Here are some of the projects, artworks, or ideas I have worked on.</p>
 
-  <div class="gallery">
-    <div class="gallery-item">
-      <img src="hb.jpg" alt="Creation 1" />
-      <p>Project One</p>
-    </div>
-    <div class="gallery-item">
-      <img src="bh.jpg" alt="Creation 2" />
-      <p>Project Two</p>
-    </div>
-    <!-- Add more creations as you like -->
+  <!-- Original content sections -->
+  <div class="resume-section">
+    <h2>📚 Writing Creations</h2>
+    <ul>
+      <li>Stories that reflect emotions, morals, and real-life experiences</li>
+      <li>Personal growth reflections recorded in "My Mind Bank"</li>
+      <li>Short essays on science, health, and social awareness</li>
+    </ul>
   </div>
+
+  <div class="resume-section">
+    <h2>🎨 Art & Sketches</h2>
+    <ul>
+      <li>Hand-drawn sketches of nature, culture, and people</li>
+      <li>Creative posters for school exhibitions</li>
+      <li>Illustrations inspired by books and daily life</li>
+    </ul>
+  </div>
+
+  <!-- First video hi.mp4 -->
+  <div class="resume-section">
+    <h2>🖼️ Creations Gallery</h2>
+    <div class="video-container paused">
+      <video loop>
+        <source src="hi.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="thumbnail-overlay"></div>
+      <div class="play-overlay">▶</div>
+      <div class="video-controls">
+        <div class="progress-container"><div class="progress-bar"></div></div>
+        <div class="controls-row">
+          <div class="left-controls">
+            <button class="control-btn play-pause-btn"><i class="fas fa-pause" style="color: white;"></i></button>
+            <div class="time-display">0:00 / 0:00</div>
+          </div>
+          <div class="right-controls">
+            <button class="control-btn volume-btn"><i class="fas fa-volume-up" style="color: white;"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Second video hello.mp4 with 2-second thumbnail -->
+  <div class="resume-section">
+    <div class="video-container paused">
+      <video loop>
+        <source src="hello.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="thumbnail-overlay"></div>
+      <div class="play-overlay">▶</div>
+      <div class="video-controls">
+        <div class="progress-container"><div class="progress-bar"></div></div>
+        <div class="controls-row">
+          <div class="left-controls">
+            <button class="control-btn play-pause-btn"><i class="fas fa-pause" style="color: white;"></i></button>
+            <div class="time-display">0:00 / 0:00</div>
+          </div>
+          <div class="right-controls">
+            <button class="control-btn volume-btn"><i class="fas fa-volume-up" style="color: white;"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="thank-you">Thank You ❣️</h2>
 </main>
-<footer>&copy; 2025 Harish Bhatta | Made with ❤</footer>
 
-<!-- Popup Modal -->
-<div id="popupOverlay">
-  <div id="popupContent">
-    <h2>Welcome to Explore More! <span class="emoji">✨🚀</span></h2>
-    <p>
-      Here you'll find my <span class="emoji">📚</span> passions, <span class="emoji">💡</span> dreams, and <span class="emoji">❤️</span> inspirations.<br/>
-      I'm on a journey to become a doctor, a kind and hardworking person,<br/>
-      and to live life with pure love and joy.<br/>
-      Thanks for exploring with me! <span class="emoji">😊🌟</span>
-    </p>
-  </div>
-</div>
+<footer>&copy; 2025 Harish Bhatta | Made with ❤</footer>
 
 <script>
   const drawer = document.getElementById('drawer');
   const hamb = document.getElementById('hamburger');
+  hamb.addEventListener('click', e => { e.stopPropagation(); drawer.classList.toggle('open'); });
+  document.addEventListener('click', e => { if (drawer.classList.contains('open') && !drawer.contains(e.target) && e.target !== hamb) { drawer.classList.remove('open'); } });
 
-  // Tap hamburger to toggle drawer
-  hamb.addEventListener('click', e => {
-    e.stopPropagation();
-    drawer.classList.toggle('open');
-  });
+  // Track currently playing video
+  let currentPlayingVideo = null;
 
-  // Tap outside to close
-  document.addEventListener('click', e => {
-    if (drawer.classList.contains('open') && !drawer.contains(e.target) && e.target !== hamb) {
-      drawer.classList.remove('open');
+  // Handle all video containers
+  document.querySelectorAll('.video-container').forEach(videoContainer => {
+    const video = videoContainer.querySelector('video');
+    const playOverlay = videoContainer.querySelector('.play-overlay');
+    const playPauseBtn = videoContainer.querySelector('.play-pause-btn');
+    const progressBar = videoContainer.querySelector('.progress-bar');
+    const progressContainer = videoContainer.querySelector('.progress-container');
+    const timeDisplay = videoContainer.querySelector('.time-display');
+    const volumeBtn = videoContainer.querySelector('.volume-btn');
+    const thumbnailOverlay = videoContainer.querySelector('.thumbnail-overlay');
+
+    function formatTime(seconds) { const mins = Math.floor(seconds / 60); const secs = Math.floor(seconds % 60); return `${mins}:${secs < 10 ? '0' : ''}${secs}`; }
+    function updateProgress() { const progress = (video.currentTime / video.duration) * 100; progressBar.style.width = `${progress}%`; timeDisplay.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`; videoContainer.classList.toggle('playing', !video.paused); }
+    progressContainer.addEventListener('click', (e) => { const rect = progressContainer.getBoundingClientRect(); const pos = (e.clientX - rect.left) / rect.width; video.currentTime = pos * video.duration; });
+
+    function togglePlayPause() { 
+      // Pause any currently playing video
+      if (currentPlayingVideo && currentPlayingVideo !== video) {
+        currentPlayingVideo.pause();
+        const otherContainer = currentPlayingVideo.closest('.video-container');
+        otherContainer.classList.add('paused');
+        otherContainer.querySelector('.play-pause-btn').innerHTML = '<i class="fas fa-play" style="color: white;"></i>';
+      }
+      
+      if (video.paused) { 
+        video.play(); 
+        playPauseBtn.innerHTML = '<i class="fas fa-pause" style="color: white;"></i>'; 
+        currentPlayingVideo = video;
+      } else { 
+        video.pause(); 
+        playPauseBtn.innerHTML = '<i class="fas fa-play" style="color: white;"></i>'; 
+        currentPlayingVideo = null;
+      } 
     }
+    
+    video.addEventListener('click', togglePlayPause);
+    playPauseBtn.addEventListener('click', togglePlayPause);
+    volumeBtn.addEventListener('click', () => { video.muted = !video.muted; volumeBtn.innerHTML = video.muted ? '<i class="fas fa-volume-mute" style="color: white;"></i>' : '<i class="fas fa-volume-up" style="color: white;"></i>'; });
+    video.addEventListener('timeupdate', updateProgress);
+    video.addEventListener('loadedmetadata', updateProgress);
+
+    // Thumbnail capture (2s for hello.mp4, 5s for hi.mp4)
+    video.addEventListener('loadeddata', () => {
+      // Determine which video it is
+      let thumbTime = video.querySelector('source').src.includes('hello.mp4') ? 2 : 5;
+      if (video.duration > thumbTime) video.currentTime = thumbTime;
+      else video.currentTime = 0;
+    });
+
+    video.addEventListener('seeked', function grabFrame() {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      thumbnailOverlay.style.backgroundImage = `url(${canvas.toDataURL()})`;
+      video.currentTime = 0;
+      video.pause();
+      video.removeEventListener('seeked', grabFrame);
+    });
+
+    // Autoplay when in viewport
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          // Pause any currently playing video
+          if (currentPlayingVideo && currentPlayingVideo !== video) {
+            currentPlayingVideo.pause();
+            const otherContainer = currentPlayingVideo.closest('.video-container');
+            otherContainer.classList.add('paused');
+            otherContainer.querySelector('.play-pause-btn').innerHTML = '<i class="fas fa-play" style="color: white;"></i>';
+          }
+          
+          video.play().catch(e => console.log("Autoplay blocked:", e));
+          videoContainer.classList.remove('paused');
+          playPauseBtn.innerHTML = '<i class="fas fa-pause" style="color: white;"></i>';
+          currentPlayingVideo = video;
+        } else {
+          video.pause();
+          videoContainer.classList.add('paused');
+          playPauseBtn.innerHTML = '<i class="fas fa-play" style="color: white;"></i>';
+          if (currentPlayingVideo === video) {
+            currentPlayingVideo = null;
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+    observer.observe(videoContainer);
   });
 
- // Swipe detection: only swipe left to close drawer
+  // Touch swipe to close drawer
   let startX = 0;
-  document.addEventListener('touchstart', e => {
-    startX = e.touches[0].clientX;
-  });
+  document.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
   document.addEventListener('touchend', e => {
     const endX = e.changedTouches[0].clientX;
     const diff = endX - startX;
-    if (Math.abs(diff) > 50) {
-      if (diff < 0) {
-        drawer.classList.remove('open'); // Swipe left closes drawer
-      }
-      // Swipe right does nothing
-    }
+    if (Math.abs(diff) > 50 && diff < 0) drawer.classList.remove('open');
   });
-
-document.addEventListener('touchend', e => {
-    const endX = e.changedTouches[0].clientX;
-    const endTime = Date.now();
-    const diffX = endX - startX;
-    const duration = endTime - startTime;
-    
-    // Only consider it a swipe if it's fast enough and long enough
-    if (duration < 300 && Math.abs(diffX) > 50) {
-        if (diffX > 0) {
-            // Swipe right to open
-            drawer.classList.add('open');
-        } else {
-            // Swipe left to close
-            drawer.classList.remove('open');
-        }
-    }
-});
 </script>
 
 </body>

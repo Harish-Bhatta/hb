@@ -24,14 +24,18 @@
       flex-direction: column;
     }
 
-    #hamburger {
-      position: fixed; 
-      left: 20px; 
-      top: 20px;
-      font-size: 2rem;
-      cursor: pointer;
-      z-index: 1400;
-    }
+   #hamburger {
+    position: fixed; left: 0px; top: 0px;
+    width: calc(40% - 70px);
+    font-size: 2rem;
+    padding: 12.5px 20px;
+    cursor: pointer;
+    z-index: 1400;
+    background: #fad090;
+    background-size: 800% 800%;
+    animation: slidebg 12s ease infinite;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
 
     #drawer {
       position: fixed; top: 0; left: -260px;
@@ -182,13 +186,19 @@
 
 <div id="drawer">
   <h2>Menu</h2>
-  <ul>
-    <li><a href="journey.html">📄 Journey</a></li>
-    <li><a href="creations.html">⭐ Creations</a></li>
-    <li><a href="connect.html">⚙️ Connect</a></li>
-    
-  </ul>
-  <hr>
+  <ul>  
+      <li><a href="journey.html">🚀 Journey</a></li>  
+      <li><a href="gallery.html">🖼️ Gallery</a></li>  
+      <li><a href="connect.html">📝️ Connect</a></li>
+     
+    </ul>  
+    <hr>  
+    <ul>  
+      <li><a href="resume.html">🌟 Resume</a></li>
+      <li><a href="creations.html">️🎨 Creations </a></li>
+      <li><a href="inspirations.html">💡 Inspirations</a></li>
+    </ul>  
+    <hr>
   <p><a style="text-decoration:none;color:#1877f2;" href="https://www.facebook.com/harish.bhatta.56305" target="_blank">🌐 Facebook</a></p>
   <p><a style="text-decoration:none;color:#ff0000;" href="https://youtube.com/@psycoshhb?si=iwU8pIWr0_GJnVZr" target="_blank">▶ YouTube</a></p>
   <hr>

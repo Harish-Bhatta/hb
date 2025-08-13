@@ -15,7 +15,7 @@
   }
   body {
     min-height: 100vh;
-    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad090, #ffecd2);
+    background: #fad090;
     background-size: 800% 800%;
     animation: slidebg 12s ease infinite;
     overflow-x: hidden;
@@ -27,16 +27,22 @@
     50% {background-position: 100% 50%;}
     100% {background-position: 0% 50%;}
   }
-  #hamburger {
-    position: fixed; left: 20px; top: 20px;
+ #hamburger {
+    position: fixed; left: 0px; top: 0px;
+    width: calc(40% - 70px);
     font-size: 2rem;
+    padding: 12.5px 20px;
     cursor: pointer;
     z-index: 1400;
+    background: #fad090;
+    background-size: 800% 800%;
+    animation: slidebg 12s ease infinite;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
   }
   #drawer {
     position: fixed; top: 0; left: -260px;
     width: 260px; height: 100%;
-    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad090, #ffecd2);
+    background: #fad090;
     background-size: 800% 800%;
     animation: slidebg 12s ease infinite;
     color: #000;
@@ -52,7 +58,17 @@
     color: #000;
     text-decoration: none;
     display: block;
-    padding: 5px 0;
+    padding: 5px 10px;
+    border-radius: 15px;
+    transition: background-color 0.3s;
+  }
+  #drawer li a:hover {
+    background: rgba(255,255,255,0.3);
+  }
+  #drawer li a.active {
+    font-weight: 700;
+    background: rgba(255,255,255,0.5);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   }
   #drawer hr { border-color: rgba(0,0,0,0.1); margin: 20px 0; }
   #drawer p { margin: 8px 0; font-weight: 500; }
@@ -63,7 +79,7 @@
     display: flex; gap: 35px;
     padding: 15px 20px;
     justify-content: center;
-    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad090, #ffecd2);
+    background: #fad090;
     background-size: 800% 800%;
     animation: slidebg 12s ease infinite;
     border-bottom: 1px solid rgba(0,0,0,0.1);
@@ -218,13 +234,18 @@ footer {
 
 <div id="drawer">
   <h2>Menu</h2>
-  <ul>
-    <li><a href="journey.html">📄 Journey</a></li>
-    <li><a href="creations.html">⭐ Creations</a></li>
-    <li><a href="connect.html" class="active">⚙️ Connect</a></li>
-    
-  </ul>
-  <hr>
+ <ul>  
+      <li><a href="journey.html">🚀 Journey</a></li>  
+      <li><a href="gallery.html">🖼️ Gallery</a></li>  
+      <li><a href="connect.html">📝️ Connect</a></li>
+    </ul>  
+    <hr>  
+    <ul>  
+      <li><a href="resume.html">🌟 Resume</a></li>
+      <li><a href="creations.html">️🎨 Creations </a></li>
+      <li><a href="inspirations.html">💡 Inspirations</a></li>
+    </ul>  
+    <hr>
   <!-- Social media links -->
   <p>
   <a style="text-decoration:none;color:#1877f2;" 
@@ -241,8 +262,8 @@ footer {
 <header>
   <a href="index.html" class="nav-link">H</a>
   <a href="journey.html" class="nav-link">J</a>
-  <a href="creations.html" class="nav-link">Cr</a>
-  <a href="connect.html" class="nav-link active">Co</a>
+  <a href="gallery.html" class="nav-link">G</a>
+  <a href="connect.html" class="nav-link">Co</a>
 </header>
 
 <main>  
@@ -266,8 +287,6 @@ footer {
 // DOM Elements  
 const hamburger = document.getElementById("hamburger");  
 const drawer = document.getElementById("drawer");  
-const emailForm = document.getElementById("emailForm");  
-const successMessage = document.getElementById("successMessage");  
 
 // Tap hamburger to toggle drawer
 hamburger.addEventListener('click', e => {
@@ -309,42 +328,73 @@ document.addEventListener('touchend', e => {
     }
 });
 
-/* ---- FORM SUBMISSION HANDLING ---- */  
-emailForm.addEventListener("submit", async (e) => {  
-  e.preventDefault();  
+// Set active navigation based on current page
+document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     
-  try {  
-    // Submit the form data to FormSubmit  
-    const formData = new FormData(emailForm);  
-    const response = await fetch(emailForm.action, {  
-      method: "POST",  
-      body: formData,  
-      headers: {  
-        'Accept': 'application/json'  
-      }  
-    });  
-      
-    if (response.ok) {  
-      // Show success message  
-      successMessage.style.display = "block";  
-      // Reset the form  
-      emailForm.reset();  
-      // Scroll to success message
-      successMessage.scrollIntoView({ behavior: 'smooth' });
-    } else {  
-      alert("There was a problem sending your message. Please try again later.");  
-    }  
-  } catch (error) {  
-    console.error("Error:", error);  
-    alert("There was an error sending your message. Please try again.");  
-  }  
-});  
+    navLinks.forEach(link => {
+      const linkPage = link.getAttribute('href');
+      if (currentPage === linkPage) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+    
+    // Also update drawer navigation
+    const drawerLinks = document.querySelectorAll('#drawer a');
+    drawerLinks.forEach(link => {
+      const linkPage = link.getAttribute('href');
+      if (currentPage === linkPage) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+});
 
-// Handle success message from FormSubmit's redirect  
-if (window.location.hash === "#success") {  
-  successMessage.style.display = "block";  
-  window.history.pushState("", document.title, window.location.pathname);  
-}  
+/* ---- FORM SUBMISSION HANDLING ---- */  
+const emailForm = document.getElementById("emailForm");  
+const successMessage = document.getElementById("successMessage");  
+
+if (emailForm) {
+  emailForm.addEventListener("submit", async (e) => {  
+    e.preventDefault();  
+      
+    try {  
+      // Submit the form data to FormSubmit  
+      const formData = new FormData(emailForm);  
+      const response = await fetch(emailForm.action, {  
+        method: "POST",  
+        body: formData,  
+        headers: {  
+          'Accept': 'application/json'  
+        }  
+      });  
+        
+      if (response.ok) {  
+        // Show success message  
+        successMessage.style.display = "block";  
+        // Reset the form  
+        emailForm.reset();  
+        // Scroll to success message
+        successMessage.scrollIntoView({ behavior: 'smooth' });
+      } else {  
+        alert("There was a problem sending your message. Please try again later.");  
+      }  
+    } catch (error) {  
+      console.error("Error:", error);  
+      alert("There was an error sending your message. Please try again.");  
+    }  
+  });  
+
+  // Handle success message from FormSubmit's redirect  
+  if (window.location.hash === "#success") {  
+    successMessage.style.display = "block";  
+    window.history.pushState("", document.title, window.location.pathname);  
+  }  
+}
 
 // Make the call and email links work properly
 document.querySelector('a[href^="tel:"]').addEventListener('click', function(e) {
