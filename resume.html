@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Resume - Harish Bhatta</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');
+
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #000;
+    -webkit-tap-highlight-color: rgba(255,255,255,0.3);
+  }
+  body {
+    min-height: 100vh;
+    background: #fad090;
+    background-size: 800% 800%;
+    animation: slidebg 12s ease infinite;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  @keyframes slidebg {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+ #hamburger {
+    position: fixed; left: 0px; top: 0px;
+    width: calc(40% - 70px);
+    font-size: 2rem;
+    padding: 12.5px 20px;
+    cursor: pointer;
+    z-index: 1400;
+    background: #fad090;
+    background-size: 800% 800%;
+    animation: slidebg 12s ease infinite;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  #drawer {
+    position: fixed; top: 0; left: -260px;
+    width: 260px; height: 100%;
+    background: #fad090;
+    background-size: 800% 800%;
+    animation: slidebg 12s ease infinite;
+    color: #000;
+    z-index: 1300;
+    padding: 70px 20px 20px;
+    transition: left .4s;
+    box-shadow: 2px 0 12px rgba(0,0,0,0.2);
+  }
+  #drawer.open { left: 0; }
+  #drawer ul { list-style: none; margin-top: 15px; padding-left: 0; }
+  #drawer li { margin: 15px 0; cursor: pointer; font-weight: 600; }
+  #drawer li a {
+    color: #000;
+    text-decoration: none;
+    display: block;
+    padding: 5px 0;
+  }
+  #drawer li a.active {
+    font-weight: 700;
+    background: rgba(255,255,255,0.5);
+    border-radius: 15px;
+    padding-left: 10px;
+  }
+  #drawer hr { border-color: rgba(0,0,0,0.1); margin: 20px 0; }
+  #drawer .social-links a {
+    display: block;
+    padding: 5px 0;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  #drawer .contact-info { margin: 8px 0; font-weight: 500; }
+
+  header {
+    position: fixed; top: 0; left: 70px;
+    width: calc(100% - 70px);
+    display: flex; gap: 35px;
+    padding: 15px 20px;
+    justify-content: center;
+    background: #fad090; /* CHANGE THIS */
+    background-size: 800% 800%; /* KEEP */
+    animation: slidebg 12s ease infinite; /* KEEP */
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    z-index: 1200;
+}
+  header a {
+    text-decoration: none;
+    color: #000;
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    transition: all .3s;
+    backdrop-filter: blur(5px);
+  }
+  header a.active {
+    font-weight: 700;
+    background: rgba(255,255,255,0.5);
+  }
+
+  main {
+    max-width: 700px;
+    margin: 120px auto 40px auto;
+    padding: 0 20px;
+    flex: 1;
+  }
+  h1 {
+    font-size: 2.7rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .resume-section {
+    margin-bottom: 25px;
+    padding: 15px;
+    background: rgba(255,255,255,0.0);
+    border-radius: 12px;
+    box-shadow: 0 0px 0px rgba(0,0,0,0.0);
+  }
+  .resume-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+  .resume-section p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .thank-you {
+    font-family: 'Dancing Script',;
+    font-size: 2.9rem;
+    text-align: center;
+    font-weight: bold;
+    background: linear-gradient(90deg, 
+      #ff0080, #ff8c00, #ffff00, #00ff00, #0080ff, #8000ff, #ff0080);
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: moveGradient 6s linear infinite;
+    margin: 50px 0 20px;
+    user-select: none;
+  }
+
+  @keyframes moveGradient {
+    0% {
+      background-position: 400% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  footer {
+    text-align: center;
+    margin-top: auto;
+    padding: 15px 0;
+    font-size: .9rem;
+  }
+</style>
+</head>
+<body>
+
+<div id="hamburger">☰</div>
+
+<div id="drawer">
+  <h2>Menu</h2>
+ <ul>  
+      <li><a href="journey.html">🚀 Journey</a></li>  
+      <li><a href="gallery.html">🖼️ Gallery</a></li>  
+      <li><a href="connect.html">📝️ Connect</a></li>
+     
+    </ul>  
+    <hr>  
+    <ul>  
+      <li><a href="resume.html" class="active">🌟 Resume</a></li>
+      <li><a href="creations.html">️🎨 Creations </a></li>
+      <li><a href="inspirations.html">💡 Inspirations</a></li>
+    </ul>  
+  <hr>
+  <div class="social-links">
+    <a href="https://www.facebook.com/harish.bhatta.56305" target="_blank" style="color: #1877f2;">🌐 Facebook</a>
+    <a href="https://youtube.com/@psycoshhb?si=iwU8pIWr0_GJnVZr" target="_blank" style="color: #ff0000;">▶ YouTube</a>
+  </div>
+  <hr>
+  <div class="contact-info">📞 +977-9848653932</div>
+  <div class="contact-info">✉ harishbhatta105@gmail.com</div>
+</div>
+
+<header>
+  <a href="index.html" class="nav-link">H</a>
+  <a href="resume.html" class="nav-link active">R</a>
+  <a href="creations.html" class="nav-link">Cr </a>
+  <a href="inspirations.html" class="nav-link"> I</a>
+</header>
+
+<main>
+  <h1>My Resume 🌟</h1>
+  
+ 📍 <b>Address:</b> Punna, Ward No. 5, Dipayal Silgadhi Municipality, Doti, Sudurpaschim, Nepal <br><br>
+ 
+   <b>📅 Date of Birth:</b> May 18, 2010<br><br>
+   
+   <b>📞 Contact:</b> +977-9848653932<br><br>
+   
+   <b>📧 Email:</b> harishbhatta105@gmail.com<br><br><br><br>
+  
+  <div class="resume-section">
+    <h2>🎓 Education</h2>
+    <ul>
+      <li>Pabitra Awasiya Secondary School, Silgadhi, Doti</li>
+      <li>Grade: 9 (Currently Studying)</li>
+      <li>Years Attended: 2016 – Present</li>
+    </ul>
+  </div>
+
+  <div class="resume-section">
+    <h2>🎯 Career Goal</h2>
+    <ul>
+      <li>To become a qualified and kind doctor, serving people with dedication and compassion, especially in rural areas of Nepal.</li>
+    </ul>
+  </div>
+
+  <div class="resume-section">
+    <h2>🧠 Academic Strengths</h2>
+    <ul>
+      <li>Science and Health Education 📘</li>
+      <li>English and Nepali Language Skills 📝</li>
+      <li>Excellent Memory and Conceptual Understanding</li>
+      <li>Quick Learner and Focused Thinker</li>
+    </ul>
+  </div>
+
+  <div class="resume-section">
+    <h2>🌱 Skills and Qualities</h2>
+    <ul>
+      <li>Highly Disciplined and Time-Managed ⏰</li>
+      <li>Smart-working and Hardworking</li>
+      <li>Kind, Honest, and Emotionally Strong</li>
+      <li>Public Speaking (Improving despite stammering) 🎤</li>
+      <li>Drawing, Gardening, and Creative Writing ✏️🌿</li>
+    </ul>
+  </div>
+
+  <div class="resume-section">
+    <h2>📚 Projects and Personal Work</h2>
+    <ul>
+      <li>Created a personal journal named "My Mind Bank" to record thoughts, dreams, and ideas</li>
+      <li>Participated in science exhibition with biology-focused topics</li>
+      <li>Regularly writes reflections and personal growth goals</li>
+    </ul>
+  </div>
+
+  <div class="resume-section">
+    <h2>🏆 Achievements</h2>
+    <ul>
+      <li>Top performer in school-level science and essay competitions</li>
+      <li>Recognized for maintaining discipline and leadership in the classroom</li>
+      <li>Participated in awareness programs related to health and hygiene</li>
+    </ul>
+  </div>
+
+  <div class="resume-section">
+    <h2>❤️ Hobbies</h2>
+    <ul>
+      <li>Reading books 📚</li>
+      <li>Drawing and sketching ✏️</li>
+      <li>Gardening 🌱</li>
+      <li>Writing thoughts, stories, and life reflections</li>
+    </ul>
+  </div>
+
+  <div class="resume-section">
+    <h2>🔰 Languages</h2>
+    <ul>
+      <li>Nepali (Fluent)</li>
+      <li>English (Good command – reading, writing, and improving in speaking)</li>
+    </ul>
+  </div>
+</div>   
+<h2 class="thank-you">Thank You❣️</h2>
+</main>
+
+<footer>&copy; 2025 Harish Bhatta | Made with ❤</footer>
+
+<script>
+  const drawer = document.getElementById('drawer');
+  const hamb = document.getElementById('hamburger');
+
+  hamb.addEventListener('click', e => {
+    e.stopPropagation();
+    drawer.classList.toggle('open');
+  });
+
+  document.addEventListener('click', e => {
+    if (drawer.classList.contains('open') && !drawer.contains(e.target) && e.target !== hamb) {
+      drawer.classList.remove('open');
+    }
+  });
+  
+   // Swipe-left to close drawer (mobile)
+  let startX = 0;
+  document.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
+  document.addEventListener('touchend', e => {
+    const endX = e.changedTouches[0].clientX;
+    const diff = endX - startX;
+    if (Math.abs(diff) > 50 && diff < 0) drawer.classList.remove('open'); // swipe left
+  });
+</script>
+
+</body>
+</html>
