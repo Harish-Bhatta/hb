@@ -6,6 +6,7 @@
 <title>Inspirations - Harish Bhatta</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 
   * {
     margin: 0; padding: 0; box-sizing: border-box;
@@ -37,7 +38,7 @@
     padding: 12.5px 20px;
     cursor: pointer;
     z-index: 1400;
-    background: #fad090; /* same as header/body */
+    background: #fad090;
     background-size: 800% 800%;
     animation: slidebg 12s ease infinite;
     border-bottom: 1px solid rgba(0,0,0,0.1);
@@ -122,8 +123,67 @@
     font-size: 1rem; line-height: 1.5;
   }
 
+  /* Gallery Styles */
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 30px 0;
+  }
+  .gallery-item {
+    width: 250px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad090, #ffecd2);
+    animation: slidebg 13s ease infinite;
+    transition: transform 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    cursor: pointer;
+    position: relative;
+    min-height: 250px;
+  }
+  .gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .gallery-item img.loaded {
+    opacity: 1;
+  }
+  .gallery-item p {
+    margin: 10px;
+    font-weight: 600;
+    text-align: center;
+    color: #333;
+  }
+  /* Loading placeholder */
+  .image-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 20px 20px 0 0;
+  }
+  @keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
   .thank-you {
-    font-family: 'Dancing Script';
+    font-family: 'Dancing Script', cursive;
     font-size: 2.9rem;
     text-align: center;
     font-weight: bold;
@@ -142,9 +202,13 @@
   }
 
   footer { text-align: center; margin-top: auto; padding: 15px 0; font-size: .9rem; }
+  
+  /* Removed loading screen styles */
 </style>
 </head>
 <body>
+
+<!-- Removed loading screen -->
 
 <div id="hamburger">☰</div>
 
@@ -185,10 +249,10 @@
     <h2>🌟 Main Inspiration</h2>
     <ul>
       <li>The divine love of Radha and Krishna – eternal, pure, and deeply meaningful 💖</li>
-      <li>Gautam Buddha – Wisdom and Peace</li>
       <li>Lessons of devotion, patience, and unconditional love from their stories</li>
-      <li>Family and Teachers – Guidance and Support</li>
       <li>Inspired by their love to cultivate kindness and harmony in life</li>
+      <li>Gautam Buddha – Wisdom and Peace</li>
+      <li>Family and Teachers – Guidance and Support</li>
     </ul>
   </div>
 
@@ -196,13 +260,14 @@
     <h2>📖 Favorite Quotes</h2>
     <ul>
        <li>"Knowledge is power." – Francis Bacon</li>
+      <li>"Discipline is the bridge between goals and accomplishment." – Jim Rohn</li>
       <li>"Love is the supreme truth of life" – Inspired Thought</li>
-       <li>"Discipline is the bridge between goals and accomplishment." – Jim Rohn</li>
       <li>"True devotion comes from pure heart and action" – Inspired Thought</li>
          <li>"Service to humanity is the highest service." – Inspired Thought</li>
       <li>"Harmony in love reflects harmony in life" – Inspired Thought</li>
     </ul>
   </div>
+  
 
   <div class="inspiration-section">
     <h2>💡 Personal Inspirations</h2>
@@ -214,30 +279,159 @@
       <li>Learning to serve others and maintain purity of heart</li>
     </ul>
   </div>
-
+  
+  <!-- Image Gallery -->
+  <div class="gallery">
+    <div class="gallery-item">
+      <div class="image-placeholder"></div>
+      <img data-src="a.jpg" alt="Meditation" loading="lazy" />
+      <p>Daily Reflection 🧘‍♂️</p>
+    </div>
+    <div class="gallery-item">
+      <div class="image-placeholder"></div>
+      <img data-src="b.jpg" alt="Helping Hands" loading="lazy" />
+      <p>Service to Others 🤝</p>
+    </div>
+    <div class="gallery-item">
+      <div class="image-placeholder"></div>
+      <img data-src="c.jpg" alt="Personal Growth" loading="lazy" />
+      <p>Personal Growth 🌱</p>
+    </div>
+    <div class="gallery-item">
+      <div class="image-placeholder"></div>
+      <img data-src="d.jpg" alt="Helping Hands" loading="lazy" />
+      <p>Service to Others 🤝</p>
+    </div>
+    <div class="gallery-item">
+      <div class="image-placeholder"></div>
+      <img data-src="e.jpg" alt="Helping Hands" loading="lazy" />
+      <p>Service to Others 🤝</p>
+    </div>
+    <div class="gallery-item">
+      <div class="image-placeholder"></div>
+      <img data-src="f.jpg" alt="Helping Hands" loading="lazy" />
+      <p>Service to Others 🤝</p>
+    </div>
+    <div class="gallery-item">
+      <div class="image-placeholder"></div>
+      <img data-src="g.jpg" alt="Helping Hands" loading="lazy" />
+      <p>Service to Others 🤝</p>
+    </div>
+    <div class="gallery-item">
+      <div class="image-placeholder"></div>
+      <img data-src="h.jpg" alt="Helping Hands" loading="lazy" />
+      <p>Service to Others 🤝</p>
+    </div>
+    <div class="gallery-item">
+      <div class="image-placeholder"></div>
+      <img data-src="i.jpg" alt="Helping Hands" loading="lazy" />
+      <p>Service to Others 🤝</p>
+    </div>
+    <div class="gallery-item">
+      <div class="image-placeholder"></div>
+      <img data-src="j.jpg" alt="Helping Hands" loading="lazy" />
+      <p>Service to Others 🤝</p>
+    </div>
+    <div class="gallery-item">
+      <div class="image-placeholder"></div>
+      <img data-src="k.jpg" alt="Helping Hands" loading="lazy" />
+      <p>Service to Others 🤝</p>
+    </div>
+    <div class="gallery-item">
+      <div class="image-placeholder"></div>
+      <img data-src="l.jpg" alt="Helping Hands" loading="lazy" />
+      <p>Service to Others 🤝</p>
+    </div>
+    <div class="gallery-item">
+      <div class="image-placeholder"></div>
+      <img data-src="m.jpg" alt="Helping Hands" loading="lazy" />
+      <p>Service to Others 🤝</p>
+    </div>
+    <div class="gallery-item">
+      <div class="image-placeholder"></div>
+      <img data-src="n.jpg" alt="Helping Hands" loading="lazy" />
+      <p>Service to Others 🤝</p>
+    </div>
+    <div class="gallery-item">
+      <div class="image-placeholder"></div>
+      <img data-src="o.jpg" alt="Helping Hands" loading="lazy" />
+      <p>Service to Others 🤝</p>
+    </div>
+  </div>
+  
   <h2 class="thank-you">Thank You❣️</h2>
 </main>
 
 <footer>&copy; 2025 Harish Bhatta | Made with ❤</footer>
 
 <script>
+  // Lazy load images as they come into view
+  function lazyLoadImages() {
+    const images = document.querySelectorAll('img[data-src]');
+    
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.classList.add('loaded');
+          
+          // Hide placeholder
+          const placeholder = img.previousElementSibling;
+          if (placeholder && placeholder.classList.contains('image-placeholder')) {
+            placeholder.style.display = 'none';
+          }
+          
+          observer.unobserve(img);
+        }
+      });
+    });
+    
+    images.forEach(img => imageObserver.observe(img));
+  }
+
+  // Initialize when DOM is loaded
+  document.addEventListener('DOMContentLoaded', lazyLoadImages);
+
   const drawer = document.getElementById('drawer');
   const hamb = document.getElementById('hamburger');
 
-  hamb.addEventListener('click', e => { e.stopPropagation(); drawer.classList.toggle('open'); });
+  // Tap hamburger to toggle drawer
+  hamb.addEventListener('click', e => {
+    e.stopPropagation();
+    drawer.classList.toggle('open');
+  });
+
+  // Tap outside to close
   document.addEventListener('click', e => {
     if (drawer.classList.contains('open') && !drawer.contains(e.target) && e.target !== hamb) {
       drawer.classList.remove('open');
     }
   });
 
-  // Swipe-left to close drawer on mobile
+  // Swipe detection: only swipe left to close drawer
   let startX = 0;
-  document.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
+  let startTime = 0;
+  document.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    startTime = Date.now();
+  });
   document.addEventListener('touchend', e => {
     const endX = e.changedTouches[0].clientX;
-    const diff = endX - startX;
-    if (Math.abs(diff) > 50 && diff < 0) drawer.classList.remove('open');
+    const endTime = Date.now();
+    const diffX = endX - startX;
+    const duration = endTime - startTime;
+    
+    // Only consider it a swipe if it's fast enough and long enough
+    if (duration < 300 && Math.abs(diffX) > 50) {
+        if (diffX > 0) {
+            // Swipe right to open
+            drawer.classList.add('none');
+        } else {
+            // Swipe left to closea
+            drawer.classList.remove('open');
+        }
+    }
   });
 </script>
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Creations - Harish Bhatta</title>
+<title>Gallery - Harish Bhatta</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');
 
@@ -86,6 +86,12 @@
     margin: 8px 0;
     font-weight: 500;
   }
+  #drawer li a.active {
+    font-weight: 700;
+    background: rgba(255,255,255,0.5);
+    border-radius: 15px;
+    padding-left: 10px;
+  }
 
     header {
     position: fixed; top: 0; left: 70px;
@@ -130,7 +136,7 @@
   }
 
  main {
-      max-width: 600px;
+      max-width: 700px;
       margin: 120px auto 40px auto;
       padding: 0 20px;
       flex: 1;
@@ -150,6 +156,7 @@
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+    margin: 30px 0;
   }
   .gallery-item {
     width: 250px;
@@ -161,16 +168,23 @@
     transition: transform 0.3s ease;
     box-shadow: 0 8px 20px rgba(0,0,0,0.25);
     cursor: pointer;
+    position: relative;
+    min-height: 250px;
   }
   .gallery-item:hover {
-    transform: scale(1.15);
+    transform: scale(1.05);
     box-shadow: 0 8px 25px rgba(0,0,0,0.2);
   }
   .gallery-item img {
     width: 100%;
-    height: 200px;
+    height: 280px;
     object-fit: cover;
     display: block;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .gallery-item img.loaded {
+    opacity: 1;
   }
   .gallery-item p {
     margin: 10px;
@@ -178,6 +192,42 @@
     text-align: center;
     color: #333;
   }
+  /* Loading placeholder */
+  .image-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 280px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 20px 20px 0 0;
+  }
+  @keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  
+  .thank-you {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.9rem;
+    text-align: center;
+    font-weight: bold;
+    background: linear-gradient(90deg,#ff0080,#ff8c00,#ffff00,#00ff00,#0080ff,#8000ff,#ff0080);
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: moveGradient 6s linear infinite;
+    margin: 50px 0 20px;
+    user-select: none;
+  }
+
+  @keyframes moveGradient {
+    0% { background-position: 400% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
 footer {
     text-align: center;
     margin-top: auto;
@@ -210,14 +260,6 @@ footer {
     font-family: 'Homemade Apple', cursive;
     color: #000;
     text-align: center;
-  }
-
-  /* Navigation styles inside drawer */
-  #drawer li a.active {
-    font-weight: 700;
-    background: rgba(255,255,255,0.5);
-    border-radius: 15px;
-    padding-left: 10px;
   }
 </style>
 </head>
@@ -264,35 +306,68 @@ footer {
   
 <main>
   <h1>My Gallery🖼</h1>
-  <p>Welcome to my gllery page! Here are some of the projects, artworks, or ideas I have worked on.</p>
+  <p>Welcome to my gallery page! Here are some of the projects, artworks, or ideas I have worked on.</p>
 
   <div class="gallery">
     <div class="gallery-item">
-      <img src="1.jpg" alt="Creation 1" />
+      <div class="image-placeholder"></div>
+      <img data-src="1.jpg" alt="Creation 1" loading="lazy" />
       <p>Radhe Krishna🥰</p>
     </div>
     <div class="gallery-item">
-      <img src="2.jpg" alt="Creation 2" />
+      <div class="image-placeholder"></div>
+      <img data-src="2.jpg" alt="Creation 2" loading="lazy" />
       <p>My pic😇</p>
     </div>
      <div class="gallery-item">
-      <img src="3.jpg" alt="Creation 3" />
+      <div class="image-placeholder"></div>
+      <img data-src="3.jpg" alt="Creation 3" loading="lazy" />
       <p>My Classmates❣️(2081)</p>
     </div>
      <div class="gallery-item">
-      <img src="4.jpg" alt="Creation 4" />
+      <div class="image-placeholder"></div>
+      <img data-src="4.jpg" alt="Creation 4" loading="lazy" />
       <p>Me🤭</p>
     </div>
     <div class="gallery-item">
-      <img src="5.jpg" alt="Creation 5" />
+      <div class="image-placeholder"></div>
+      <img data-src="5.jpg" alt="Creation 5" loading="lazy" />
       <p>Me🤭</p>
     </div> 
     <div class="gallery-item">
-      <img src="6.jpg" alt="Creation 6" />
+      <div class="image-placeholder"></div>
+      <img data-src="6.jpg" alt="Creation 6" loading="lazy" />
       <p>My Friends💖</p>
-    </div> 
+    </div>
+    <div class="gallery-item">
+      <div class="image-placeholder"></div>
+      <img data-src="g.jpg" alt="Creation 6" loading="lazy" />
+      <p>My Friends💖</p>
+    </div>
+    <div class="gallery-item">
+      <div class="image-placeholder"></div>
+      <img data-src="h.jpg" alt="Creation 6" loading="lazy" />
+      <p>My Friends💖</p>
+    </div>
+    <div class="gallery-item">
+      <div class="image-placeholder"></div>
+      <img data-src="i.jpg" alt="Creation 6" loading="lazy" />
+      <p>My Friends💖</p>
+    </div>
+    <div class="gallery-item">
+      <div class="image-placeholder"></div>
+      <img data-src="j.jpg" alt="Creation 6" loading="lazy" />
+      <p>My Friends💖</p>
+    </div>
+    <div class="gallery-item">
+      <div class="image-placeholder"></div>
+      <img data-src="k.jpg" alt="Creation 6" loading="lazy" />
+      <p>My Friends💖</p>
+    </div>
     <!-- Add more creations as you like -->
   </div>
+  
+  <h2 class="thank-you">Thank You❣️</h2>
 </main>
 <footer>&copy; 2025 Harish Bhatta | Made with ❤</footer>
 
@@ -310,55 +385,152 @@ footer {
 </div>
 
 <script>
-  const drawer = document.getElementById('drawer');
-  const hamb = document.getElementById('hamburger');
-
-  // Tap hamburger to toggle drawer
-  hamb.addEventListener('click', e => {
-    e.stopPropagation();
-    drawer.classList.toggle('open');
-  });
-
-  // Tap outside to close
-  document.addEventListener('click', e => {
-    if (drawer.classList.contains('open') && !drawer.contains(e.target) && e.target !== hamb) {
-      drawer.classList.remove('open');
-    }
-  });
-
- // Swipe detection: only swipe left to close drawer
-  let startX = 0;
-  document.addEventListener('touchstart', e => {
-    startX = e.touches[0].clientX;
-  });
-  document.addEventListener('touchend', e => {
-    const endX = e.changedTouches[0].clientX;
-    const diff = endX - startX;
-    if (Math.abs(diff) > 50) {
-      if (diff < 0) {
-        drawer.classList.remove('open'); // Swipe left closes drawer
-      }
-      // Swipe right does nothing
-    }
-  });
-
-document.addEventListener('touchend', e => {
-    const endX = e.changedTouches[0].clientX;
-    const endTime = Date.now();
-    const diffX = endX - startX;
-    const duration = endTime - startTime;
+  // Optimized lazy loading with requestIdleCallback and throttling
+  function lazyLoadImages() {
+    const images = document.querySelectorAll('img[data-src]');
+    let loadedCount = 0;
+    const totalImages = images.length;
     
-    // Only consider it a swipe if it's fast enough and long enough
-    if (duration < 300 && Math.abs(diffX) > 50) {
-        if (diffX > 0) {
-            // Swipe right to open
-            drawer.classList.add('open');
-        } else {
-            // Swipe left to close
-            drawer.classList.remove('open');
+    // Load first 2-3 images immediately
+    const initialLoadCount = Math.min(3, totalImages);
+    for (let i = 0; i < initialLoadCount; i++) {
+      loadImage(images[i], () => {
+        loadedCount++;
+        if (loadedCount === initialLoadCount) {
+          // After initial images are loaded, set up observer for the rest
+          setupLazyObserver(Array.from(images).slice(initialLoadCount));
         }
+      });
     }
-});
+    
+    // If there are fewer than initial load count images
+    if (totalImages <= initialLoadCount) {
+      setupLazyObserver([]);
+    }
+  }
+
+  function setupLazyObserver(imagesToObserve) {
+    if (imagesToObserve.length === 0) return;
+    
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          loadImage(img);
+          observer.unobserve(img);
+        }
+      });
+    }, {
+      rootMargin: '200px 0px' // Load images 200px before they come into view
+    });
+    
+    imagesToObserve.forEach(img => imageObserver.observe(img));
+  }
+
+  function loadImage(img, callback) {
+    if (!img || !img.dataset.src) return;
+    
+    // Use requestIdleCallback for non-urgent image loading
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => {
+        img.src = img.dataset.src;
+        img.onload = function() {
+          img.classList.add('loaded');
+          hidePlaceholder(img);
+          if (callback) callback();
+        };
+      }, { timeout: 1000 });
+    } else {
+      // Fallback for browsers without requestIdleCallback
+      setTimeout(() => {
+        img.src = img.dataset.src;
+        img.onload = function() {
+          img.classList.add('loaded');
+          hidePlaceholder(img);
+          if (callback) callback();
+        };
+      }, 100);
+    }
+  }
+
+  function hidePlaceholder(img) {
+    const placeholder = img.previousElementSibling;
+    if (placeholder && placeholder.classList.contains('image-placeholder')) {
+      placeholder.style.display = 'none';
+    }
+  }
+
+  // Initialize when DOM is loaded
+  document.addEventListener('DOMContentLoaded', function() {
+    // Load critical content first, then images
+    setTimeout(lazyLoadImages, 100);
+    
+    // Set up drawer functionality
+    const drawer = document.getElementById('drawer');
+    const hamb = document.getElementById('hamburger');
+
+    // Tap hamburger to toggle drawer
+    hamb.addEventListener('click', e => {
+      e.stopPropagation();
+      drawer.classList.toggle('open');
+    });
+
+    // Tap outside to close
+    document.addEventListener('click', e => {
+      if (drawer.classList.contains('open') && !drawer.contains(e.target) && e.target !== hamb) {
+        drawer.classList.remove('open');
+      }
+    });
+
+    // Swipe detection: only swipe left to close drawer
+    let startX = 0;
+    let startTime = 0;
+    document.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+      startTime = Date.now();
+    });
+    document.addEventListener('touchend', e => {
+      const endX = e.changedTouches[0].clientX;
+      const endTime = Date.now();
+      const diffX = endX - startX;
+      const duration = endTime - startTime;
+      
+      // Only consider it a swipe if it's fast enough and long enough
+      if (duration < 300 && Math.abs(diffX) > 50) {
+          if (diffX > 0) {
+              // Swipe right to open
+              drawer.classList.add('none');
+          } else {
+              // Swipe left to close
+              drawer.classList.remove('open');
+          }
+      }
+    });
+  });
+
+  // Optimized scroll handling
+  let scrollTimeout;
+  window.addEventListener('scroll', function() {
+    // Clear the timeout if it's already set
+    clearTimeout(scrollTimeout);
+    
+    // Set a timeout to run after scrolling stops
+    scrollTimeout = setTimeout(function() {
+      // Check for images in viewport after scrolling stops
+      const images = document.querySelectorAll('img[data-src]');
+      const viewportHeight = window.innerHeight;
+      
+      images.forEach(img => {
+        const rect = img.getBoundingClientRect();
+        if (rect.top < viewportHeight + 200 && rect.bottom > -200) {
+          // If image is in or near viewport, load it
+          if (img.dataset.src && !img.src) {
+            loadImage(img);
+          }
+        }
+      });
+    }, 150);
+  });
 </script>
 
 </body>
