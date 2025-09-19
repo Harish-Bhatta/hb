@@ -102,6 +102,11 @@
       margin-bottom: 20px;
       text-align: center;
     }
+      p {
+    font-size: 1.15rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
 
     .success-message {
       text-align: center;
@@ -153,7 +158,26 @@
     textarea {
       min-height: 120px;
     }
+    
+    a.contact-link {
+    display: inline-block;
+    margin: 10px 15px;
+    padding: 15px 40px;
+    background: #ff7e5f;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    font-size: 1.1rem;
+    cursor: pointer;
+    position: center;
+  }
 
+a.contact-link:hover {
+    background: #ff5722;
+  }
+  
     button {
       align-self: center;
       background: #ff7e5f;
@@ -213,14 +237,18 @@
   <a href="contact.html" class="active">C</a>
 </header>
 
-<main>
-  <h1>Contact Me</h1>
-  
+<main>  
+  <h1>Connect with Me 🤝</h1>  
   <div id="successMessage" class="success-message">
     Your message was sent successfully!<br>
     Thank you for contacting me.
   </div>
+  <p>If you want to contact me, feel free to reach out through the following:</p>  
+  <p><strong>Phone:</strong> +977-9848653932</p>  
+  <p><strong>Email:</strong> harishbhatta105@gmail.com</p>  
+  
 
+  
   <form id="contactForm" action="https://formspree.io/f/xpwlobld" method="POST">
     <label for="name">Name</label>
     <input type="text" id="name" name="name" placeholder="Your full name" required>
