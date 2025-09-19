@@ -32,7 +32,7 @@
 
   .video-container { position: relative; width: 100%; margin-top: 20px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
   .video-container video { width: 100%; display: block; cursor: pointer; }
-  .video-controls { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.7); padding: 10px; display: flex; flex-direction: column; transition: opacity 0.3s; opacity: 0; }
+  .video-controls { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.0); padding: 10px; display: flex; flex-direction: column; transition: opacity 0.3s; opacity: 0; }
   .video-container:hover .video-controls { opacity: 1; }
   .progress-container { width: 100%; height: 6px; background: none; margin-bottom: 8px; cursor: pointer; border-radius: 3px; }
   .progress-bar { height: 100%; background: #ff0000; border-radius: 3px; width: 0%; position: relative; }
@@ -47,7 +47,13 @@
   .thumbnail-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; pointer-events: none; opacity: 0; transition: opacity 0.3s; }
   .video-container.playing .thumbnail-overlay { opacity: 0; }
 
-  .thank-you { font-size: 2.9rem; text-align: center; font-weight: bold; background: linear-gradient(90deg,#ff0080,#ff8c00,#ffff00,#00ff00,#0080ff,#8000ff,#ff0080); background-size: 400% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: moveGradient 6s linear infinite; margin: 50px 0 20px; user-select: none; }
+  .thank-you { 
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.9rem; 
+    text-align: center; 
+    font-weight: bold; 
+    background: linear-gradient(90deg,#ff0080,#ff8c00,#ffff00,#00ff00,#0080ff,#8000ff,#ff0080); 
+    background-size: 400% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: moveGradient 6s linear infinite; margin: 50px 0 20px; user-select: none; }
   @keyframes moveGradient { 0% { background-position: 400% 50%; } 100% { background-position: 0% 50%; } }
   footer { text-align: center; margin-top: auto; padding: 15px 0; font-size: .9rem; }
 </style>
@@ -157,7 +163,7 @@
     </div>
   </div>
 
-  <h2 class="thank-you">Thank You ❣️</h2>
+  <h2 class="thank-you">𝓣𝓱𝓪𝓷𝓴 𝓨𝓸𝓾❣️</h2>
 </main>
 
 <footer>&copy; 2025 Harish Bhatta | Made with ❤</footer>
